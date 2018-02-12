@@ -56,6 +56,7 @@ summary(modelA)
 ```
 
 ## a) Understanding model output [1 point]
+## Hva skjer bri?
 ## b) Model fit [1 point]
 ## c) Confidence interval and hypothesis test [1 points]
 ## d) Prediction [1 point]
