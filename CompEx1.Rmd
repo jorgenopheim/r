@@ -16,11 +16,6 @@ editor_options:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Take a look at the cheat sheets for R Markdown here: File > Help > Cheatsheets > R Markdown Cheat Sheet in RStudio, or here
-<http://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf>
-
-or the lessons: <http://rmarkdown.rstudio.com/lesson-1.html>
-
 # Problem 1 - Core concepts in statistical learning [2 points]
 
 ## a) Training and test MSE [1 point]
@@ -33,14 +28,16 @@ or the lessons: <http://rmarkdown.rstudio.com/lesson-1.html>
 
 ## b) Bias-variance trade-off [1 point]
 
-* \textcolor{blue}{Explain how that is done. Hint: this is what the $M$ repeated training data sets are used for.}
-  The variance is calculated by use of R's own function ```var``` over all experiments $M$ for a given $x$ and $K$. The squared bias is then found by squaring the difference between the mean over all $M$ experiments for a given $x$ and $K$ and the true value of $y$ for that particular $x$ (equal for all values of $K$). \textcolor{red}{Add some formulae?}
+* The variance is calculated by use of R's own function ```var``` over all experiments $M$ for a given $x$ and $K$. The squared bias is then found by squaring the difference between the mean over all $M$ experiments for a given $x$ and $K$ and the true value of $y$ for that particular $x$ (equal for all values of $K$). \textcolor{red}{Add some formulae?}
+    
+* As flexibility increases (K decreases)
+    + the squared bias decreases (as expected by less fitting to the specific training data),
+    + variance increases (as expected from closer fitting to specific training data),
+    + and the irreducible error is left unchanged. The irreducible error is caused by variance of the underlying data and is not affected by modelling.
   
-* Focus on Figure 4. As the flexibility of the model increases ($K$ decreases), what happens with
-    + the squared bias,  
-    + the variance, and  
-    + the irreducible error?
-* What would you recommend is the optimal value of $K$? Is this in agreement with what you found in a)?
+* By observation of the total test MSE the optimal value of $K$ seems to be $K = 3$ (for which the total error is smallest), as suggested in a).
+
+* [Extra] In $Figure 5$ the optimal value of $K$ seems to be greater than that previously identified. This is however for four specific values of $x$, none of which are at the boundaries of $x$'s domain ($x \in [-3, 3]$). \textcolor{red}{Possible to do analysis for more values of $x$ to test validity of reasoning?}
 
 # Problem 2 - Linear regression [4 points]
 
