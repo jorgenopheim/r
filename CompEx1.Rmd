@@ -2,7 +2,7 @@
 subtitle: "TMA4268 Statistical Learning V2018"
 title: "Compulsory exercise 1: Group 21"
 author: "Jørgen Opheim, Ole-Andreas Sandnes and Sander Coates"
-date: "[Date]"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: #3rd letter intentation hierarchy
   # prettydoc::html_pretty:
   #   theme: tactile
@@ -24,16 +24,18 @@ or the lessons: <http://rmarkdown.rstudio.com/lesson-1.html>
 # Problem 1 - Core concepts in statistical learning [2 points]
 
 ## a) Training and test MSE [1 point]
-Here you write your smart answer. You may write latex $Y=f(x)+\varepsilon$.
 
-Items with
+* *Figure 2* shows that variance is reduced for increased values of $K$, but at the cost of increased bias.
+* A low value of $K$ gives the most flexible fit.
 
-* item1
-* item2
+* As expected from lower flexibility for higher $K$, the training MSE increases with $K$. This is due to the reduced fitting of the model to the specific data. However, when introducing the test data, overfitting by a too flexible model leads to increased test MSE for the lowest values of $K$. This suggest a slightly less flexible and thus less biased model (more on the bias-variance trade-off later) is better.
+* By observation, it seems that $K = 3$ gives the lowest test MSE, and hence is the best choice of K for modelling $f(x)$ based on observed values $y = f(x) + \epsilon$.
 
 ## b) Bias-variance trade-off [1 point]
 
-* Explain how that is done. Hint: this is what the $M$ repeated training data sets are used for. 
+* \textcolor{blue}{Explain how that is done. Hint: this is what the $M$ repeated training data sets are used for.}
+  The variance is calculated by use of R's own function ```var``` over all experiments $M$ for a given $x$ and $K$. The squared bias is then found by squaring the difference between the mean over all $M$ experiments for a given $x$ and $K$ and the true value of $y$ for that particular $x$ (equal for all values of $K$). \textcolor{red}{Add some formulae?}
+  
 * Focus on Figure 4. As the flexibility of the model increases ($K$ decreases), what happens with
     + the squared bias,  
     + the variance, and  
