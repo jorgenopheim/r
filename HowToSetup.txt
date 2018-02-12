@@ -1,0 +1,14 @@
+1	Go to https://github.com/join and create a user
+2	Open Terminal and check that git is installed:
+		which git
+		git --version
+3	In Terminal, configure git username and e-mail (same as used for github):
+		git config --global user.name '<name>'
+		git config --global user.email '<email>'
+4	In Terminal, move to a directory of your liking by using the cd command:
+		cd Desktop/Folder
+5	In Terminal, clone the git hub repository:
+		git init
+		git clone https://github.com/sandercoates/r.git
+6	In RStudio, open the r project by clicking File -> Open Project and select the r.Rproj file
+7	Go ahead and discover the project files and git version control
