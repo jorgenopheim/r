@@ -54,7 +54,33 @@ summary(modelA)
 
 ## a) Understanding model output [1 point]
 
-* $$Y_i= \beta_0 + \beta_{1}  x_{i1} + \beta_2 x_{i2} + ... + \beta_p x_{ip} + \varepsilon_i,$$ where $i=1,2,...,n$
+* The equation for `modelA` is
+$$Y_i= \beta_0 + \sum_x \beta_{x}  x_{i} + \varepsilon_i,$$ where $i=1,2,...,n$, $x \in \{$`SEX`, `AGE`, `CURSMOKE`, `BMI`, `TOTCHOL`, `BPMEDS`$\}$, and $Y_i =$ `-1/sqrt(SYSBP_i)`.
+
+* In the summary output,
+  + `Estimate` refers to the least squares coefficient estimates for the intercept ($\hat{beta}_0$) and covariates ($\hat{\beta}_x, x \in \{$`SEX`, `AGE`, `CURSMOKE`, `BMI`, `TOTCHOL`, `BPMEDS`$\}$). In particular, `Intercept` gives the expected response variable when all covariates are zero. The other estimates are interpreted as the average effect on $Y$ of a marginal (unit) increase in the respective covariate, holding all others fixed.
+  + The `Std. Error` refers to a systematic error in the estimate of the coefficients by inference from the training data, and is calculated as
+
+$$\text{SE}(\hat\beta_0)^2 = \sigma^2\bigg[\frac{1}{n} + \frac{\bar{x}^2}{\sum_{i = 1}^n(x_i - \bar{x})^2}\bigg], \text{SE}(\hat\beta_1)^2 = \frac{\sigma^2}{\sum_{i = 1}^n(x_i - \bar{x})^2},$$
+\textcolor{red}{The above formulae are for simple linear regression... What is the equivalent for multiple regression?}
+
++ The `t value` refers to the t-statistic given by
+
+$$t = \frac{\hat\beta_1 - 0}{\text{SE}(\hat\beta_1)}$$
+by which we test for each covariate whether or not its coefficient estimate is different from zero or not. In other words, the `t value` gives a measure of how many standard deviations the observed estimate is away from zero. A large `t value` for a covariate suggests the covariate does affect the response variable.
+
+
++ `Pr(>|t|)` gives the probability of observing a more extreme coefficient than that estimated, for a student t distribution. It is the *p value*, and a standardized way of expressing the probability of type I error (false positives), i.e. rejecting the null hypothesis of a zero coefficient and concluding instead that the covariate affects the response variable.
+
++ \textcolor{red}{Residual standard error}
+
++ The `F-statistic` provides a way of testing, for mulitple regression, whether all coefficents are zero (null hypothesis). The test is performed by calculating
+
+$$F = \frac{\text{TSS} - \text{RSS}/p}{\text{RSS}/(n - p - 1)},$$
+
+where $\text{TSS} = \sum(y_i - \bar{y})^2$ (total sum of squares) and $\text{RSS} = \sum(y_i - \hat{y}_i)^2$ (residual sum of squares). A large F-statistic suggests that not all coefficients are zero, and that at least one covariate affects the response variable.
+
+\textcolor{red}{Improve assignment by relating above ``definitions'' to observed values in output summary?}
 
 ## b) Model fit [1 point]
 ## c) Confidence interval and hypothesis test [1 points]
